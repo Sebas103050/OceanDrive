@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Ocean Drive</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-anchor"></i> Ocean Drive
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="search.html">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-2" href="register.html">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header bg-primary text-white py-5 mt-5">
+        <div class="container">
+            <h1 class="mb-2">Nuestro Catálogo</h1>
+            <p class="lead">Explora nuestras embarcaciones disponibles</p>
+        </div>
+    </div>
+
+    <div class="container-fluid py-5">
+        <div class="row">
+            <!-- Sidebar Filters -->
+            <div class="col-lg-3 mb-4">
+                <div class="card sticky-top" style="top: 70px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-filter me-2"></i>Filtros</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Filter by Type -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Tipo de Embarcación</label>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="type1" value="yate" onchange="applyFilters()">
+                                <label class="form-check-label" for="type1">Yate Lujo</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="type2" value="catamarán" onchange="applyFilters()">
+                                <label class="form-check-label" for="type2">Catamarán</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="type3" value="velero" onchange="applyFilters()">
+                                <label class="form-check-label" for="type3">Velero</label>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Filter by Capacity -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Capacidad</label>
+                            <input type="range" class="form-range" min="2" max="20" value="20" id="capacityRange" onchange="applyFilters()">
+                            <small class="text-muted">Hasta <span id="capacityValue">20</span> personas</small>
+                        </div>
+
+                        <hr>
+
+                        <!-- Filter by Price -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Precio Diario</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="priceMin" placeholder="Mín" value="0" onchange="applyFilters()">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="priceMax" placeholder="Máx" value="5000" onchange="applyFilters()">
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Filter by Amenities -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Servicios</label>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="service1" value="capitán" onchange="applyFilters()">
+                                <label class="form-check-label" for="service1">Capitán Incluido</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="service2" value="catering" onchange="applyFilters()">
+                                <label class="form-check-label" for="service2">Catering</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-checkbox" type="checkbox" id="service3" value="entretenimiento" onchange="applyFilters()">
+                                <label class="form-check-label" for="service3">Entretenimiento</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary w-100" onclick="resetFilters()">Limpiar Filtros</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Sort and View Options -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <span class="text-muted">Mostrando <strong id="resultCount">0</strong> embarcaciones</span>
+                    </div>
+                    <div>
+                        <select class="form-select form-select-sm w-auto" id="sortSelect" onchange="applySort()">
+                            <option value="name-asc">Nombre (A-Z)</option>
+                            <option value="price-asc">Precio (Menor a Mayor)</option>
+                            <option value="price-desc">Precio (Mayor a Menor)</option>
+                            <option value="capacity-asc">Capacidad (Menor a Mayor)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Yachts Grid -->
+                <div class="row g-4" id="yachtGrid">
+                    <!-- Yacht Cards will be inserted here by JavaScript -->
+                </div>
+
+                <!-- No Results Message -->
+                <div class="alert alert-info d-none" id="noResults">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No se encontraron embarcaciones que coincidan con tus criterios. Intenta ajustar los filtros.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h6><i class="fas fa-anchor"></i> Ocean Drive</h6>
+                    <p class="small">Renta de yates lujosos con los mejores servicios</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Enlaces Rápidos</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="text-white-50">Inicio</a></li>
+                        <li><a href="search.html" class="text-white-50">Catálogo</a></li>
+                        <li><a href="#" class="text-white-50">Términos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Síguenos</h6>
+                    <div class="social-links">
+                        <a href="#" class="text-white-50 me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white-50 me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white-50 me-2"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center small text-white-50">
+                &copy; 2025 Ocean Drive - Todos los derechos reservados
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

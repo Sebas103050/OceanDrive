@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Embarcación - Ocean Drive</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-anchor"></i> Ocean Drive
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="search.html">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Ingresar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-3">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="search.html">Catálogo</a></li>
+                <li class="breadcrumb-item active" aria-current="page" id="breadcrumbName">Embarcación</li>
+            </ol>
+        </nav>
+
+        <div class="row g-4">
+            <!-- Image Gallery -->
+            <div class="col-lg-7">
+                <div class="card shadow-sm">
+                    <div id="yachtCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators" id="carouselIndicators">
+                            <!-- Indicators will be added by JS -->
+                        </div>
+                        <div class="carousel-inner" id="carouselImages">
+                            <!-- Images will be added by JS -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#yachtCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#yachtCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yacht Info & Booking -->
+            <div class="col-lg-5">
+                <div class="card shadow-sm sticky-top" style="top: 80px;">
+                    <div class="card-body">
+                        <h1 class="h3 mb-2" id="yachtName">Nombre Embarcación</h1>
+                        <div class="mb-3">
+                            <span class="badge bg-info me-2"><i class="fas fa-star"></i> 4.8/5 (125 reseñas)</span>
+                            <span class="badge bg-success" id="availability">Disponible</span>
+                        </div>
+
+                        <!-- Precio -->
+                        <div class="mb-4 pb-3 border-bottom">
+                            <div class="h3 text-primary" id="yachtPrice">$1,500</div>
+                            <small class="text-muted">por día de renta</small>
+                        </div>
+
+                        <!-- Características Principales -->
+                        <div class="mb-4">
+                            <h5>Características Principales</h5>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="feature-item">
+                                        <i class="fas fa-ruler text-primary"></i>
+                                        <p class="mb-0"><strong id="yachtLength">45</strong> m</p>
+                                        <small class="text-muted">Largo</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="feature-item">
+                                        <i class="fas fa-users text-primary"></i>
+                                        <p class="mb-0"><strong id="yachtCapacity">12</strong> pax</p>
+                                        <small class="text-muted">Capacidad</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="feature-item">
+                                        <i class="fas fa-bed text-primary"></i>
+                                        <p class="mb-0"><strong id="yachtBedrooms">4</strong> camarotes</p>
+                                        <small class="text-muted">Dormitorios</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="feature-item">
+                                        <i class="fas fa-water text-primary"></i>
+                                        <p class="mb-0"><strong id="yachtBathrooms">2</strong> baños</p>
+                                        <small class="text-muted">Sanitarios</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Booking Form -->
+                        <h5 class="mb-3">Reservar Embarcación</h5>
+                        <form id="bookingForm">
+                            <div class="mb-3">
+                                <label for="bookingDate" class="form-label">Fecha de Inicio</label>
+                                <input type="date" class="form-control" id="bookingDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bookingDays" class="form-label">Número de Días</label>
+                                <select class="form-select" id="bookingDays" required>
+                                    <option selected disabled>Seleccionar</option>
+                                    <option value="1">1 día</option>
+                                    <option value="2">2 días</option>
+                                    <option value="3">3 días</option>
+                                    <option value="7">Una semana</option>
+                                    <option value="14">Dos semanas</option>
+                                    <option value="30">Un mes</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bookingGuests" class="form-label">Número de Huéspedes</label>
+                                <select class="form-select" id="bookingGuests" required>
+                                    <option selected disabled>Seleccionar</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 personas</option>
+                                    <option value="4">4 personas</option>
+                                    <option value="6">6 personas</option>
+                                    <option value="8">8 personas</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 p-3 bg-light rounded">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Renta base:</span>
+                                    <span id="subtotal">$0</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Servicios adicionales:</span>
+                                    <span id="services">$0</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between">
+                                    <strong>Total:</strong>
+                                    <strong class="text-primary h5" id="totalPrice">$0</strong>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100 btn-lg mb-2" onclick="proceedToCheckout()">
+                                Continuar con Reserva
+                            </button>
+                            <button type="button" class="btn btn-outline-primary w-100" onclick="contactUs()">
+                                Contactar Directamente
+                            </button>
+                        </form>
+                        <script>
+                            function proceedToCheckout() {
+                                const fecha = document.getElementById("bookingDate").value;
+                                const dias = document.getElementById("bookingDays").value;
+                                const huespedes = document.getElementById("bookingGuests").value;
+                                const total = document.getElementById("totalPrice").innerText.replace("$", "");
+
+   
+                                    const user = JSON.parse(localStorage.getItem("user"));
+
+                                if (!user) {
+                                        alert("Debes iniciar sesión para continuar");
+                                            return;
+                                             }
+
+                                                const data = {
+                                                    user_id: user.id,
+                                                    fecha_inicio: fecha,
+                                                    dias,
+                                                    huespedes,
+                                                    total
+                                                };
+
+                                                        fetch("http://localhost:3001/reservas", {
+                                                            method: "POST",
+                                                            headers: {
+                                                                "Content-Type": "application/json"
+                                                            },
+                                                            body: JSON.stringify(data)
+                                                        })
+                                                        .then(res => res.json())
+                                                        .then(response => {
+                                                            console.log(response);
+                                                            if (response.status === "success") {
+                                                                alert("Reserva creada correctamente");
+                                                            } else {
+                                                                alert("Error al guardar reserva: " + response.message);
+                                                            }
+                                                        });
+                                                                     }   
+                                                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Description -->
+        <div class="row mt-5">
+            <div class="col-lg-7">
+                <!-- Description -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Descripción</h5>
+                    </div>
+                    <div class="card-body">
+                        <p id="yachtDescription">Descripción de la embarcación...</p>
+                    </div>
+                </div>
+
+                <!-- Amenities -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-check me-2"></i>Amenidades</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3" id="amenitiesList">
+                            <!-- Will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rules & Policies -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-file-contract me-2"></i>Términos y Políticas</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Política de Cancelación</h6>
+                        <p>Cancelación gratuita hasta 7 días antes de la fecha de reserva.</p>
+                        <h6>Requisitos</h6>
+                        <ul>
+                            <li>Mayor de 18 años</li>
+                            <li>Documento de identidad válido</li>
+                            <li>Licencia de conducción válida (si es capitán autodividido)</li>
+                            <li>Depósito de garantía (reembolsable)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-5">
+                <!-- Similar Yachts -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Embarcaciones Similares</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="similarYachts">
+                            <!-- Will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews -->
+                <div class="card shadow-sm mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-comments me-2"></i>Reseñas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="reviewsList">
+                            <div class="review-item mb-3 pb-3 border-bottom">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <strong>Juan Pérez</strong>
+                                    <span class="text-warning"><i class="fas fa-star"></i> 5/5</span>
+                                </div>
+                                <p class="mb-0">Excelente experiencia. Embarcación impecable y equipo muy profesional.</p>
+                            </div>
+                            <div class="review-item mb-3 pb-3 border-bottom">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <strong>María López</strong>
+                                    <span class="text-warning"><i class="fas fa-star"></i> 4.5/5</span>
+                                </div>
+                                <p class="mb-0">Muy buen servicio. Recomendado para eventos especiales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h6><i class="fas fa-anchor"></i> Ocean Drive</h6>
+                    <p class="small">Renta de yates lujosos con los mejores servicios</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Enlaces Rápidos</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="index.html" class="text-white-50">Inicio</a></li>
+                        <li><a href="search.html" class="text-white-50">Catálogo</a></li>
+                        <li><a href="#" class="text-white-50">Términos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Síguenos</h6>
+                    <div class="social-links">
+                        <a href="#" class="text-white-50 me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white-50 me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white-50 me-2"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center small text-white-50">
+                &copy; 2025 Ocean Drive - Todos los derechos reservados
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
